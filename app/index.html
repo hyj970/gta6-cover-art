@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Bay Cover Studio</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1>NEON BAY <span>Cover Studio</span></h1>
+    <p>Turn your photo and a caption into a GTA-style poster for the fictional city of Neon Bay. Your photos never leave this machine.</p>
+  </div>
+  <div class="top-actions">
+    <label class="size-label" for="size">Export size</label>
+    <select id="size">
+      <option value="1080x1080" selected>1080 &times; 1080 &mdash; square post</option>
+      <option value="1080x1350">1080 &times; 1350 &mdash; portrait post</option>
+      <option value="1920x1080">1920 &times; 1080 &mdash; wide banner</option>
+    </select>
+    <button id="export" type="button" class="primary">Export PNG</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="panel controls" aria-label="Cover controls">
+    <h2>1 &middot; Layout</h2>
+    <div class="row" role="group" aria-label="Panel layout">
+      <button type="button" class="choice layout-choice" data-layout="triptych" aria-pressed="true">Triptych</button>
+      <button type="button" class="choice layout-choice" data-layout="split" aria-pressed="false">Split</button>
+      <button type="button" class="choice layout-choice" data-layout="hero" aria-pressed="false">Hero</button>
+    </div>
+    <p class="hint">Triptych fills three panels; Split fills two; Hero fills one big panel.</p>
+
+    <h2>2 &middot; Colour grade</h2>
+    <div class="row" role="group" aria-label="Colour grade">
+      <button type="button" class="choice grade-choice" data-grade="sunset" aria-pressed="true">Vice Sunset</button>
+      <button type="button" class="choice grade-choice" data-grade="neon" aria-pressed="false">Neon Night</button>
+      <button type="button" class="choice grade-choice" data-grade="teal" aria-pressed="false">Teal Dusk</button>
+    </div>
+
+    <h2>3 &middot; Photos</h2>
+    <p class="hint">Load your own photos, or use a sample illustration. Drag the sliders to crop and position each one.</p>
+    <div id="slots"></div>
+
+    <h2>4 &middot; Caption</h2>
+    <label class="field">Caption
+      <input id="caption" type="text" maxlength="28" value="NEON BAY" autocomplete="off">
+    </label>
+    <label class="field">Caption style
+      <select id="captionStyle">
+        <option value="sunset" selected>Sunset gradient</option>
+        <option value="neon">Neon pink</option>
+        <option value="outline">White outline</option>
+      </select>
+    </label>
+    <label class="field">Caption position
+      <select id="captionPos">
+        <option value="bottom" selected>Bottom band</option>
+        <option value="top">Top band</option>
+      </select>
+    </label>
+    <p class="status" id="status" role="status">Ready. Load a photo or pick a sample to begin.</p>
+  </section>
+
+  <section class="panel preview" aria-label="Live preview">
+    <h2>Live preview</h2>
+    <div class="canvas-wrap">
+      <canvas id="cover" width="1080" height="1080" aria-label="Cover preview"></canvas>
+    </div>
+    <p class="hint">The preview is exactly what the PNG export draws, at the size you picked.</p>
+    <div id="exportBox" class="export-box" hidden>
+      <h3>Your exported cover</h3>
+      <img id="exportPreview" alt="The exported cover PNG">
+      <p class="hint" id="exportMeta"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Neon Bay, Mara Voss, Dante Cole and Luna Reyes are fictional. No Rockstar Games artwork, logos, characters or fonts are used anywhere in this app.</p>
+</footer>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
